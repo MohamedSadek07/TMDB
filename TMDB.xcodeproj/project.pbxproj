@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		3C1E7F932F8FB6A6009E8788 /* JahezNetwork in Frameworks */ = {isa = PBXBuildFile; productRef = 3C1E7F922F8FB6A6009E8788 /* JahezNetwork */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		3C1E7F132F8FAAB6009E8788 /* TMDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TMDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -23,6 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C1E7F932F8FB6A6009E8788 /* JahezNetwork in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +70,7 @@
 			);
 			name = TMDB;
 			packageProductDependencies = (
+				3C1E7F922F8FB6A6009E8788 /* JahezNetwork */,
 			);
 			productName = TMDB;
 			productReference = 3C1E7F132F8FAAB6009E8788 /* TMDB.app */;
@@ -94,6 +100,9 @@
 			);
 			mainGroup = 3C1E7F0A2F8FAAB6009E8788;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				3C1E7F912F8FB6A6009E8788 /* XCLocalSwiftPackageReference "JahezNetwork" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 3C1E7F142F8FAAB6009E8788 /* Products */;
 			projectDirPath = "";
@@ -260,7 +269,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.1;
@@ -297,7 +306,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.1;
@@ -335,6 +344,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		3C1E7F912F8FB6A6009E8788 /* XCLocalSwiftPackageReference "JahezNetwork" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = JahezNetwork;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3C1E7F922F8FB6A6009E8788 /* JahezNetwork */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = JahezNetwork;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3C1E7F0B2F8FAAB6009E8788 /* Project object */;
 }
