@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum APIHTTPMethod: String {
+public enum APIHTTPMethod: String {
     case GET
     case POST
     case PUT

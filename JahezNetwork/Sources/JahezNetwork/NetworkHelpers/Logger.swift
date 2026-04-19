@@ -36,7 +36,7 @@ public enum Log {
         let context = Context(file: file, function: function, line: line)
         Log.handleLog(level: .warning, str: str.description, shouldLogContext: shouldLogContext, context: context)
     }
-    static func error(_ str: String, shouldLogContext: Bool = true, file: String = #file, function: String = #function, line: Int = #line) {
+    public static func error(_ str: String, shouldLogContext: Bool = true, file: String = #file, function: String = #function, line: Int = #line) {
         let context = Context(file: file, function: function, line: line)
         Log.handleLog(level: .error, str: str.description, shouldLogContext: shouldLogContext, context: context)
     }

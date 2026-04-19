@@ -8,13 +8,16 @@
 import Foundation
 import Combine
 
-class NetworkHelper {
+public class NetworkHelper {
     enum HTTPHeaderField: String {
-        case contentType = "Content-Type"
+        case accept = "accept"
+        case authorization = "Authorization"
     }
-    static func getHeaders() -> [String: String] {
+    public static func getHeaders() -> [String: String] {
             let headers = [
-                HTTPHeaderField.contentType.rawValue: "application/json"
+                HTTPHeaderField.accept.rawValue: "application/json",
+                HTTPHeaderField.authorization.rawValue : "Bearer \(Constants.authorizationToken)"
+                
             ]
             return headers
     }
