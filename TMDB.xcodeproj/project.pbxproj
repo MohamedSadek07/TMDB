@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3C1E7F932F8FB6A6009E8788 /* JahezNetwork in Frameworks */ = {isa = PBXBuildFile; productRef = 3C1E7F922F8FB6A6009E8788 /* JahezNetwork */; };
+		3C1E81262F92F6C6009E8788 /* JahezDesign in Frameworks */ = {isa = PBXBuildFile; productRef = 3C1E81252F92F6C6009E8788 /* JahezDesign */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C1E7F932F8FB6A6009E8788 /* JahezNetwork in Frameworks */,
+				3C1E81262F92F6C6009E8788 /* JahezDesign in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +73,7 @@
 			name = TMDB;
 			packageProductDependencies = (
 				3C1E7F922F8FB6A6009E8788 /* JahezNetwork */,
+				3C1E81252F92F6C6009E8788 /* JahezDesign */,
 			);
 			productName = TMDB;
 			productReference = 3C1E7F132F8FAAB6009E8788 /* TMDB.app */;
@@ -102,6 +105,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				3C1E7F912F8FB6A6009E8788 /* XCLocalSwiftPackageReference "JahezNetwork" */,
+				3C1E81242F92F6C6009E8788 /* XCLocalSwiftPackageReference "JahezDesign" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 3C1E7F142F8FAAB6009E8788 /* Products */;
@@ -350,12 +354,20 @@
 			isa = XCLocalSwiftPackageReference;
 			relativePath = JahezNetwork;
 		};
+		3C1E81242F92F6C6009E8788 /* XCLocalSwiftPackageReference "JahezDesign" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = JahezDesign;
+		};
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
 		3C1E7F922F8FB6A6009E8788 /* JahezNetwork */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = JahezNetwork;
+		};
+		3C1E81252F92F6C6009E8788 /* JahezDesign */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = JahezDesign;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
