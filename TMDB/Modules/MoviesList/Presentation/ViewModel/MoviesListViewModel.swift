@@ -7,13 +7,15 @@
 
 import Foundation
 import Combine
-import JahezDesign
+import JahezUtilities
 import JahezNetwork
 
 class MoviesListViewModel: ObservableObject {
 
     // Variables
     private let moviesListUseCase: MoviesListUseCaseProtocol
+    private let moviesCacher: MoviesCacherProtocol
+    private let networkMonitor = NetworkMonitor.shared
     private var cancelable: Set<AnyCancellable> = []
     private var timerCancellable: AnyCancellable?
     // Published Variables
@@ -23,6 +25,7 @@ class MoviesListViewModel: ObservableObject {
     @Published var moviesArray: [Movie] = []
     @Published var pageNumber = 1
     @Published var canLoadMorePages = true
+    @Published var isOffline = false
     @Published var selectedGenreId = 0 {
         didSet {
             applyFilters()
@@ -36,8 +39,11 @@ class MoviesListViewModel: ObservableObject {
     private var allMovies: [Movie] = []
 
     // MARK: - init
-    init(moviesListUseCase: MoviesListUseCaseProtocol) {
+    init(moviesListUseCase: MoviesListUseCaseProtocol,
+         moviesCacher: MoviesCacherProtocol) {
         self.moviesListUseCase = moviesListUseCase
+        self.moviesCacher = moviesCacher
+        observeNetwork()
     }
     // MARK: - Methods
     private func getGenresList() {
@@ -60,6 +66,10 @@ class MoviesListViewModel: ObservableObject {
     
     private func getMoviesList() {
         guard !isLoadingMore else { return }
+        guard networkMonitor.isConnected else {
+            loadFromCache()
+            return
+        }
         
         if pageNumber == 1 {
             isLoading = true
@@ -86,6 +96,8 @@ class MoviesListViewModel: ObservableObject {
                     break
                 case .failure(let err):
                     Log.error("getMovies Error \(err)")
+                    // fall back to cache
+                    self.loadFromCache()
                 }
             },
             receiveValue: { [weak self] response in
@@ -95,6 +107,7 @@ class MoviesListViewModel: ObservableObject {
                 
                 if self.pageNumber == 1 {
                     self.allMovies = newMovies
+                    moviesCacher.save(allMovies)
                 } else {
                     self.allMovies.append(contentsOf: newMovies)
                 }
@@ -115,8 +128,9 @@ class MoviesListViewModel: ObservableObject {
 }
 
 // MARK: - Extension
+/// Helper Methods
 extension MoviesListViewModel {
-    // MARK: Helper Methods
+ 
     private func getYearFromDate(_ dateString: String) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
@@ -129,6 +143,8 @@ extension MoviesListViewModel {
         }
     }
     func loadMoreMovies() {
+        // Disable Pagination in offline state
+        guard !isOffline else { return }
         guard canLoadMorePages && !isLoadingMore && !isLoading else { return }
         pageNumber += 1
         getMoviesList()
@@ -161,4 +177,33 @@ extension MoviesListViewModel {
 
         moviesArray = result
     }
+}
+
+/// Observe Network And Cache
+extension MoviesListViewModel {
+    private func observeNetwork() {
+        networkMonitor.$isConnected
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] connected in
+                guard let self else { return }
+                self.isOffline = !connected
+                if connected {
+                    // refresh
+                    self.pageNumber = 1
+                    self.allMovies = []
+                    self.getMoviesList()
+                } else {
+                    // load cache
+                    self.loadFromCache()
+                }
+            }
+            .store(in: &cancelable)
+    }
+    
+    private func loadFromCache() {
+          let cached = moviesCacher.load()
+          guard !cached.isEmpty else { return }
+          allMovies = cached
+          applyFilters()
+      }
 }

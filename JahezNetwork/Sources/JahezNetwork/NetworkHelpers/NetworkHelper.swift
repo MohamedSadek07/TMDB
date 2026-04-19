@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import JahezUtilities
 
 public class NetworkHelper {
     enum HTTPHeaderField: String {

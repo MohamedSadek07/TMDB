@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import JahezUtilities
 
 public protocol NetworkClientProtocol: AnyObject {
     func request<R: Codable>(request: URLRequest, mapToModel: R.Type) -> AnyPublisher<R, NetworkError>

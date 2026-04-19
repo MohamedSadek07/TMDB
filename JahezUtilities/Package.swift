@@ -4,27 +4,21 @@
 import PackageDescription
 
 let package = Package(
-    name: "JahezNetwork",
+    name: "JahezUtilities",
     platforms: [
         .iOS(.v16)
        ],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
-            name: "JahezNetwork",
-            targets: ["JahezNetwork"]),
-    ],
-    dependencies: [
-        .package(path: "../JahezUtilities"),
+            name: "JahezUtilities",
+            targets: ["JahezUtilities"]),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "JahezNetwork",
-            dependencies: [
-            .product(name: "JahezUtilities", package: "JahezUtilities")
-           ]
-        ),
+            name: "JahezUtilities"),
+
     ]
 )

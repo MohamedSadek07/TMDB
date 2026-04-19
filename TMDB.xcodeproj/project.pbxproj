@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3C1E7F932F8FB6A6009E8788 /* JahezNetwork in Frameworks */ = {isa = PBXBuildFile; productRef = 3C1E7F922F8FB6A6009E8788 /* JahezNetwork */; };
 		3C1E81262F92F6C6009E8788 /* JahezDesign in Frameworks */ = {isa = PBXBuildFile; productRef = 3C1E81252F92F6C6009E8788 /* JahezDesign */; };
+		3C1E838D2F954609009E8788 /* JahezUtilities in Frameworks */ = {isa = PBXBuildFile; productRef = 3C1E838C2F954609009E8788 /* JahezUtilities */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C1E7F932F8FB6A6009E8788 /* JahezNetwork in Frameworks */,
+				3C1E838D2F954609009E8788 /* JahezUtilities in Frameworks */,
 				3C1E81262F92F6C6009E8788 /* JahezDesign in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -74,6 +76,7 @@
 			packageProductDependencies = (
 				3C1E7F922F8FB6A6009E8788 /* JahezNetwork */,
 				3C1E81252F92F6C6009E8788 /* JahezDesign */,
+				3C1E838C2F954609009E8788 /* JahezUtilities */,
 			);
 			productName = TMDB;
 			productReference = 3C1E7F132F8FAAB6009E8788 /* TMDB.app */;
@@ -106,6 +109,7 @@
 			packageReferences = (
 				3C1E7F912F8FB6A6009E8788 /* XCLocalSwiftPackageReference "JahezNetwork" */,
 				3C1E81242F92F6C6009E8788 /* XCLocalSwiftPackageReference "JahezDesign" */,
+				3C1E838B2F954609009E8788 /* XCLocalSwiftPackageReference "JahezUtilities" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 3C1E7F142F8FAAB6009E8788 /* Products */;
@@ -358,6 +362,10 @@
 			isa = XCLocalSwiftPackageReference;
 			relativePath = JahezDesign;
 		};
+		3C1E838B2F954609009E8788 /* XCLocalSwiftPackageReference "JahezUtilities" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = JahezUtilities;
+		};
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -368,6 +376,10 @@
 		3C1E81252F92F6C6009E8788 /* JahezDesign */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = JahezDesign;
+		};
+		3C1E838C2F954609009E8788 /* JahezUtilities */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = JahezUtilities;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

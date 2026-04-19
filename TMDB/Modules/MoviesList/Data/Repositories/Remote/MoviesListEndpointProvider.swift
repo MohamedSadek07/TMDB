@@ -7,6 +7,7 @@
 
 import Foundation
 import JahezNetwork
+import JahezUtilities
 
 enum MoviesListEndpointProvider {
     case genreList(GenreMoviesListRequestModel)

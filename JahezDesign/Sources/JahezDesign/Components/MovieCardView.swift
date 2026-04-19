@@ -6,30 +6,7 @@
 //
 
 import SwiftUI
-
-// MARK: - Model
-public struct Movie: Identifiable {
-    public let id: Int
-    public let title: String
-    public let year: String
-    public let posterURL: String
-    public let genreIds: [Int]
-    
-    public init(
-        id: Int,
-        title: String,
-        year: String,
-        posterURL: String,
-        genreIds: [Int]
-    ) {
-        self.id = id
-        self.title = title
-        self.year = year
-        self.posterURL = posterURL
-        self.genreIds = genreIds
-    }
-}
-
+import JahezUtilities
 
 // MARK: - Movie Card View
 public struct MovieCardView: View {
@@ -43,28 +20,7 @@ public struct MovieCardView: View {
         VStack(alignment: .leading, spacing: 0) {
 
             // MARK: Poster Image
-            AsyncImage(url: URL(string: movie.posterURL)) { phase in
-                switch phase {
-                case .empty:
-                    Rectangle()
-                        .fill(Color.white.opacity(0.07))
-                        .overlay(ProgressView().tint(.white.opacity(0.4)))
-                case .success(let image):
-                    image
-                        .resizable()
-                        .scaledToFill()
-                case .failure:
-                    Rectangle()
-                        .fill(Color.white.opacity(0.07))
-                        .overlay(
-                            Image(systemName: "film")
-                                .font(.system(size: 28))
-                                .foregroundStyle(.white.opacity(0.3))
-                        )
-                @unknown default:
-                    EmptyView()
-                }
-            }
+            CachedAsyncImage(url: movie.posterURL)
             .frame(maxWidth: .infinity, minHeight: 200, maxHeight: 200)
             .clipped()
 

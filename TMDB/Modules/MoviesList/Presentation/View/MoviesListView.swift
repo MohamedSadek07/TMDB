@@ -7,6 +7,7 @@
 
 import SwiftUI
 import JahezDesign
+import JahezUtilities
 
 struct MoviesListView: View {
     // MARK: Dependencies

@@ -1,8 +1,8 @@
 //
 //  Logger.swift
-//  TMDB
+//  JahezUtilities
 //
-//  Created by Mohamed Sadek on 16/04/2026.
+//  Created by Mohamed Sadek on 19/04/2026.
 //
 
 import Foundation
@@ -28,7 +28,7 @@ public enum Log {
             return "\((file as NSString).lastPathComponent): \(line) \(function)"
         }
     }
-    static func info(_ str: String, shouldLogContext: Bool = true, file: String = #file, function: String = #function, line: Int = #line) {
+    public static func info(_ str: String, shouldLogContext: Bool = true, file: String = #file, function: String = #function, line: Int = #line) {
         let context = Context(file: file, function: function, line: line)
         Log.handleLog(level: .info, str: str.description, shouldLogContext: shouldLogContext, context: context)
     }
@@ -51,4 +51,3 @@ public enum Log {
         #endif
     }
 }
-
