@@ -35,14 +35,20 @@ struct CachedAsyncImage: View {
 
 
 // MARK: - AsyncImageLoader
-struct AsyncImageLoader: View {
+public struct AsyncImageLoader: View {
     // Variables
     let url: String
     @State private var image: UIImage?
     @State private var isLoading = true
+    
+    public init(url: String, image: UIImage? = nil, isLoading: Bool = true) {
+        self.url = url
+        self.image = image
+        self.isLoading = isLoading
+    }
 
     // Body
-    var body: some View {
+    public var body: some View {
         Group {
             if let image {
                 Image(uiImage: image)

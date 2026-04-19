@@ -23,31 +23,33 @@ struct MoviesListView: View {
     
     // MARK: - Body
     var body: some View {
-        ZStack {
-            Color(red: 0.05, green: 0.05, blue: 0.05)
-                .ignoresSafeArea()
-            
-            ScrollView(.vertical, showsIndicators: false) {
-                VStack(alignment: .leading, spacing: 0) {
-                    
-                    // Search bar
-                    SearchBar(text: $viewModel.searchText)
-                        .padding(.horizontal, 16)
-                        .padding(.top, 12)
-                        .padding(.bottom, 20)
-                    
-                    // Title
-                    Text("Watch New Movies")
-                        .font(.system(size: 28, weight: .bold))
-                        .foregroundStyle(Color.yellow)
-                        .padding(.horizontal, 16)
-                        .padding(.bottom, 16)
-                    
-                    // Genre filter pills
-                    genresSection()
-                    
-                    // Movies List
-                    moviesSection()
+        NavigationView {
+            ZStack {
+                Color(red: 0.05, green: 0.05, blue: 0.05)
+                    .ignoresSafeArea()
+                
+                ScrollView(.vertical, showsIndicators: false) {
+                    VStack(alignment: .leading, spacing: 0) {
+                        
+                        // Search bar
+                        SearchBar(text: $viewModel.searchText)
+                            .padding(.horizontal, 16)
+                            .padding(.top, 12)
+                            .padding(.bottom, 20)
+                        
+                        // Title
+                        Text("Watch New Movies")
+                            .font(.system(size: 28, weight: .bold))
+                            .foregroundStyle(Color.yellow)
+                            .padding(.horizontal, 16)
+                            .padding(.bottom, 16)
+                        
+                        // Genre filter pills
+                        genresSection()
+                        
+                        // Movies List
+                        moviesSection()
+                    }
                 }
             }
         }
@@ -107,6 +109,7 @@ extension MoviesListView {
         } else {
             LazyVGrid(columns: columns, spacing: 14) {
                 ForEach(viewModel.moviesArray) { movie in
+                    NavigationLink(destination: MovieDetailsConfigurator.configureModule(passedMovieId: movie.id)) {
                     MovieCardView(movie: movie)
                         .onAppear {
                             // Load more when last item appears
@@ -114,6 +117,7 @@ extension MoviesListView {
                                 viewModel.loadMoreMovies()
                             }
                         }
+                    }
                 }
             }
             .padding(.horizontal, 16)
