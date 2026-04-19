@@ -74,8 +74,12 @@ extension MoviesListView {
                         isSelected: viewModel.selectedGenreId == genre.id
                     ) {
                         withAnimation(.easeInOut(duration: 0.2)) {
-                            viewModel.selectedGenreId = genre.id ?? 0
-                            viewModel.searchText = ""
+                            // On Tap Genre Action
+                            if viewModel.selectedGenreId == genre.id {
+                                viewModel.selectedGenreId = 0   // deselect
+                            } else {
+                                viewModel.selectedGenreId = genre.id ?? 0
+                            }
                         }
                     }
                 }

@@ -22,11 +22,15 @@ class MoviesListViewModel: ObservableObject {
     @Published var genresArray: [Genre] = []
     @Published var moviesArray: [Movie] = []
     @Published var pageNumber = 1
-    @Published var selectedGenreId = 0
     @Published var canLoadMorePages = true
+    @Published var selectedGenreId = 0 {
+        didSet {
+            applyFilters()
+        }
+    }
     @Published var searchText = "" {
         didSet {
-            filterMovies()
+            applyFilters()
         }
     }
     private var allMovies: [Movie] = []
@@ -95,7 +99,7 @@ class MoviesListViewModel: ObservableObject {
                     self.allMovies.append(contentsOf: newMovies)
                 }
                 
-                self.filterMovies()
+                self.applyFilters()
                 
                 // Check if we can load more pages
                 self.canLoadMorePages = !newMovies.isEmpty
@@ -135,17 +139,26 @@ extension MoviesListViewModel {
                 id: $0.id ?? 0,
                 title: $0.title ?? "",
                 year: self.getYearFromDate($0.releaseDate ?? ""),
-                posterURL: Constants.postureBaseUrl + ($0.posterPath ?? "")
+                posterURL: Constants.postureBaseUrl + ($0.posterPath ?? ""),
+                genreIds: $0.genreIDS ?? []
             )
         } ?? []
     }
-    private func filterMovies() {
-        if searchText.isEmpty {
-            moviesArray = allMovies
-        } else {
-            moviesArray = allMovies.filter {
+    private func applyFilters() {
+        var result = allMovies
+
+        // Apply genre filter
+        if selectedGenreId != 0 {
+            result = result.filter { $0.genreIds.contains(selectedGenreId) }
+        }
+
+        // Apply search filter on top
+        if !searchText.isEmpty {
+            result = result.filter {
                 $0.title.localizedCaseInsensitiveContains(searchText)
             }
         }
+
+        moviesArray = result
     }
 }

@@ -29,7 +29,7 @@ struct MoviesListResult: Codable {
     enum CodingKeys: String, CodingKey {
         case adult
         case backdropPath
-        case genreIDS
+        case genreIDS = "genre_ids"
         case id
         case originalLanguage
         case originalTitle

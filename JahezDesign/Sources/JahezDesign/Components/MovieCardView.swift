@@ -13,12 +13,20 @@ public struct Movie: Identifiable {
     public let title: String
     public let year: String
     public let posterURL: String
+    public let genreIds: [Int]
     
-    public init(id: Int, title: String, year: String, posterURL: String) {
+    public init(
+        id: Int,
+        title: String,
+        year: String,
+        posterURL: String,
+        genreIds: [Int]
+    ) {
         self.id = id
         self.title = title
         self.year = year
         self.posterURL = posterURL
+        self.genreIds = genreIds
     }
 }
 
