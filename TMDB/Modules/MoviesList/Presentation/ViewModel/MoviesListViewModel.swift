@@ -23,8 +23,13 @@ class MoviesListViewModel: ObservableObject {
     @Published var moviesArray: [Movie] = []
     @Published var pageNumber = 1
     @Published var selectedGenreId = 0
-    @Published var searchText = ""
     @Published var canLoadMorePages = true
+    @Published var searchText = "" {
+        didSet {
+            filterMovies()
+        }
+    }
+    private var allMovies: [Movie] = []
 
     // MARK: - init
     init(moviesListUseCase: MoviesListUseCaseProtocol) {
@@ -85,10 +90,12 @@ class MoviesListViewModel: ObservableObject {
                 let newMovies = mapMovies(response)
                 
                 if self.pageNumber == 1 {
-                    self.moviesArray = newMovies
+                    self.allMovies = newMovies
                 } else {
-                    self.moviesArray.append(contentsOf: newMovies)
+                    self.allMovies.append(contentsOf: newMovies)
                 }
+                
+                self.filterMovies()
                 
                 // Check if we can load more pages
                 self.canLoadMorePages = !newMovies.isEmpty
@@ -97,10 +104,8 @@ class MoviesListViewModel: ObservableObject {
                 
             }).store(in: &cancelable)
     }
-    func callGetGenresList() {
+    func callViewRequests() {
         getGenresList()
-    }
-    func callGetMoviesList() {
         getMoviesList()
     }
 }
@@ -108,7 +113,7 @@ class MoviesListViewModel: ObservableObject {
 // MARK: - Extension
 extension MoviesListViewModel {
     // MARK: Helper Methods
-    func getYearFromDate(_ dateString: String) -> String {
+    private func getYearFromDate(_ dateString: String) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         
@@ -124,7 +129,7 @@ extension MoviesListViewModel {
         pageNumber += 1
         getMoviesList()
     }
-    func mapMovies(_ response: MoviesListResponseModel) -> [Movie] {
+    private func mapMovies(_ response: MoviesListResponseModel) -> [Movie] {
         return response.results?.map {
             Movie(
                 id: $0.id ?? 0,
@@ -133,5 +138,14 @@ extension MoviesListViewModel {
                 posterURL: Constants.postureBaseUrl + ($0.posterPath ?? "")
             )
         } ?? []
+    }
+    private func filterMovies() {
+        if searchText.isEmpty {
+            moviesArray = allMovies
+        } else {
+            moviesArray = allMovies.filter {
+                $0.title.localizedCaseInsensitiveContains(searchText)
+            }
+        }
     }
 }

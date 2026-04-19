@@ -15,7 +15,6 @@ struct MoviesListView: View {
     init(viewModel: MoviesListViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
-    
     let columns = [
         GridItem(.flexible(), spacing: 14),
         GridItem(.flexible(), spacing: 14),
@@ -39,36 +38,20 @@ struct MoviesListView: View {
                     // Title
                     Text("Watch New Movies")
                         .font(.system(size: 28, weight: .bold))
-                        .foregroundStyle(Color(red: 1.0, green: 0.82, blue: 0.14))
+                        .foregroundStyle(Color.yellow)
                         .padding(.horizontal, 16)
                         .padding(.bottom, 16)
                     
                     // Genre filter pills
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 9) {
-                            ForEach(viewModel.genresArray, id: \.id) { genre in
-                                GenreCapsule(
-                                    title: genre.name ?? "",
-                                    isSelected: viewModel.selectedGenreId == genre.id
-                                ) {
-                                    withAnimation(.easeInOut(duration: 0.2)) {
-                                        viewModel.selectedGenreId = genre.id ?? 0
-                                        viewModel.searchText = ""
-                                    }
-                                }
-                            }
-                        }
-                        .padding(.horizontal, 16)
-                    }
-                    .padding(.bottom, 18)
+                    genresSection()
                     
+                    // Movies List
                     moviesSection()
                 }
             }
         }
         .onAppear {
-            viewModel.callGetGenresList()
-            viewModel.callGetMoviesList()
+            viewModel.callViewRequests()
         }
         .overlay(alignment: .center) {
             if viewModel.isLoading {
@@ -78,10 +61,33 @@ struct MoviesListView: View {
             }
         }
     }
+}
+
+extension MoviesListView {
+    // Genre Horizontal Scrollable List
+    private func genresSection() -> some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(spacing: 9) {
+                ForEach(viewModel.genresArray, id: \.id) { genre in
+                    GenreCapsule(
+                        title: genre.name ?? "",
+                        isSelected: viewModel.selectedGenreId == genre.id
+                    ) {
+                        withAnimation(.easeInOut(duration: 0.2)) {
+                            viewModel.selectedGenreId = genre.id ?? 0
+                            viewModel.searchText = ""
+                        }
+                    }
+                }
+            }
+            .padding(.horizontal, 16)
+        }
+        .padding(.bottom, 18)
+    }
     
+    // Movie Grid
     @ViewBuilder
     private func moviesSection() -> some View {
-        // Movie grid
         if viewModel.moviesArray.isEmpty {
             VStack(spacing: 12) {
                 Image(systemName: "film.stack")
