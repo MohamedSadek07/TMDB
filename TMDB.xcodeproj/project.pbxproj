@@ -12,14 +12,30 @@
 		3C1E838D2F954609009E8788 /* JahezUtilities in Frameworks */ = {isa = PBXBuildFile; productRef = 3C1E838C2F954609009E8788 /* JahezUtilities */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		3C1E85132F95805F009E8788 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3C1E7F0B2F8FAAB6009E8788 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3C1E7F122F8FAAB6009E8788;
+			remoteInfo = TMDB;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		3C1E7F132F8FAAB6009E8788 /* TMDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TMDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C1E850F2F95805F009E8788 /* TMDBTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TMDBTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		3C1E7F152F8FAAB6009E8788 /* TMDB */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = TMDB;
+			sourceTree = "<group>";
+		};
+		3C1E85102F95805F009E8788 /* TMDBTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = TMDBTests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -35,6 +51,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3C1E850C2F95805F009E8788 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -42,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				3C1E7F152F8FAAB6009E8788 /* TMDB */,
+				3C1E85102F95805F009E8788 /* TMDBTests */,
 				3C1E7F142F8FAAB6009E8788 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -50,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				3C1E7F132F8FAAB6009E8788 /* TMDB.app */,
+				3C1E850F2F95805F009E8788 /* TMDBTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -82,6 +107,29 @@
 			productReference = 3C1E7F132F8FAAB6009E8788 /* TMDB.app */;
 			productType = "com.apple.product-type.application";
 		};
+		3C1E850E2F95805F009E8788 /* TMDBTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3C1E85172F95805F009E8788 /* Build configuration list for PBXNativeTarget "TMDBTests" */;
+			buildPhases = (
+				3C1E850B2F95805F009E8788 /* Sources */,
+				3C1E850C2F95805F009E8788 /* Frameworks */,
+				3C1E850D2F95805F009E8788 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3C1E85142F95805F009E8788 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				3C1E85102F95805F009E8788 /* TMDBTests */,
+			);
+			name = TMDBTests;
+			packageProductDependencies = (
+			);
+			productName = TMDBTests;
+			productReference = 3C1E850F2F95805F009E8788 /* TMDBTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -94,6 +142,10 @@
 				TargetAttributes = {
 					3C1E7F122F8FAAB6009E8788 = {
 						CreatedOnToolsVersion = 16.2;
+					};
+					3C1E850E2F95805F009E8788 = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = 3C1E7F122F8FAAB6009E8788;
 					};
 				};
 			};
@@ -117,12 +169,20 @@
 			projectRoot = "";
 			targets = (
 				3C1E7F122F8FAAB6009E8788 /* TMDB */,
+				3C1E850E2F95805F009E8788 /* TMDBTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		3C1E7F112F8FAAB6009E8788 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3C1E850D2F95805F009E8788 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -139,7 +199,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3C1E850B2F95805F009E8788 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3C1E85142F95805F009E8788 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3C1E7F122F8FAAB6009E8788 /* TMDB */;
+			targetProxy = 3C1E85132F95805F009E8788 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		3C1E7F202F8FAAB7009E8788 /* Debug */ = {
@@ -330,6 +405,45 @@
 			};
 			name = Release;
 		};
+		3C1E85152F95805F009E8788 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Jahez.TMDBTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TMDB.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TMDB";
+			};
+			name = Debug;
+		};
+		3C1E85162F95805F009E8788 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Jahez.TMDBTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TMDB.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TMDB";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -347,6 +461,15 @@
 			buildConfigurations = (
 				3C1E7F232F8FAAB7009E8788 /* Debug */,
 				3C1E7F242F8FAAB7009E8788 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3C1E85172F95805F009E8788 /* Build configuration list for PBXNativeTarget "TMDBTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3C1E85152F95805F009E8788 /* Debug */,
+				3C1E85162F95805F009E8788 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

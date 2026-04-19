@@ -206,4 +206,10 @@ extension MoviesListViewModel {
           allMovies = cached
           applyFilters()
       }
+    func testLoadFromCache() {
+        loadFromCache()
+    }
+    func testGetYearFromDate(_ date: String) -> String {
+        getYearFromDate(date)
+    }
 }
